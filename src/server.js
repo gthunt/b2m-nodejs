@@ -1,5 +1,15 @@
 'use strict'
-//const { createLogger, format, transports } = require('winston')
+const { createLogger, format, transports } = require('winston')
+const logger = createLogger({
+  level: 'debug',
+  format: format.combine(
+    format.timestamp({
+      format: "YYYY-MM-DD'T'HH:mm:ss.SSSZ"
+    }),
+    format.json()
+  ),
+  transports: [new transports.Console()]
+});
 const express = require('express')
 //const Prometheus = require('prom-client')
 
